@@ -1,10 +1,10 @@
 package de.stefanmedack.ccctv.model
 
+import android.os.Parcelable
 import info.metadude.kotlin.library.c3media.models.Event
-import paperparcel.PaperParcel
-import paperparcel.PaperParcelable
+import kotlinx.android.parcel.Parcelize
 
-@PaperParcel
+@Parcelize
 data class MiniEvent(
         val title: String,
         val subtitle: String,
@@ -12,11 +12,7 @@ data class MiniEvent(
         val url: String,
         val posterUrl: String,
         val thumbUrl: String
-) : PaperParcelable {
-    companion object {
-        @JvmField val CREATOR = PaperParcelMiniEvent.CREATOR
-    }
-
+) : Parcelable {
     object ModelMapper {
         fun from(from: Event?): MiniEvent = MiniEvent(
                 title = from?.title ?: "",
